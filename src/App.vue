@@ -1,28 +1,68 @@
 <template>
-    <div class="app_wrapper">
-        <TheSidepanel class="sidepanel_wrapper" />
-        <div class="main_wrapper">
-            <TheHeader class="header_wrapper" />
-            <div class="content_wrapper">
-                <RouterView />
+    <n-config-provider :theme-overrides="themeOverrides">
+        <div class="app_wrapper">
+            <TheSidepanel class="sidepanel_wrapper" />
+            <div class="main_wrapper">
+                <TheHeader class="header_wrapper" />
+                <div class="content_wrapper">
+                    <RouterView />
+                </div>
             </div>
         </div>
-    </div>
+
+        <drawer-core
+            v-model:visibleProp="drawerVisible"
+            :title="drawerTitle"
+            :component-prop="drawerComponent"
+            :props="drawerProps"
+            @close="closeDrawer"
+        />
+    </n-config-provider>
 </template>
 
 <script lang="js">
+import { NConfigProvider } from 'naive-ui'
 import { RouterView } from 'vue-router';
+import { provide } from "vue";
+
+import { themeOverrides } from './services/naiveui';
 import TheHeader from './partials/core/TheHeader.vue';
 import TheSidepanel from './partials/core/TheSidepanel.vue';
+import DrawerCore from "@/partials/drawers/core.vue";
+
     export default {
-        components: {TheHeader, TheSidepanel}
+        components: {NConfigProvider, TheHeader, TheSidepanel, DrawerCore},
+        data() {
+            return {
+                themeOverrides: themeOverrides(),
+
+                drawerVisible: false,
+                drawerTitle: "",
+                drawerComponent: null,
+                drawerProps: {},
+            }
+        },
+        methods: {
+            openDrawer(data) {
+                this.drawerComponent = data.component;
+                this.drawerTitle = data.title;
+                this.drawerVisible = true;
+            },
+            closeDrawer() {
+                this.drawerVisible = false;
+                this.drawerComponent = null;
+            },
+        },
+        created() {
+            provide('openDrawer', this.openDrawer);
+            provide('closeDrawer', this.closeDrawer);
+        },
     };
 </script>
 
 <style lang="scss">
 .app_wrapper {
     height: 100vh;
-    border: solid 4px blue;
     display: flex;
     .sidepanel_wrapper {
         width: 250px;
@@ -38,8 +78,7 @@ import TheSidepanel from './partials/core/TheSidepanel.vue';
         .content_wrapper {
             flex-grow: 1;
             padding: 20px;
-            border: solid 4px purple;
-            background-color: rgba(175, 4, 175, 0.275);
+            border: solid 1px black;
         }
     }
 }

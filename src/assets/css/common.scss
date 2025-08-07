@@ -1,0 +1,12 @@
+.view-header {
+    display: flex;
+    align-items: center;
+    .view-title {
+        margin-right: auto;
+    }
+}
+.view-content {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+}

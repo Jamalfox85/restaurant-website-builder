@@ -27,4 +27,12 @@ npm run dev
 ```sh
 npm run build
 ```
+
 # restaurant-website-builder
+
+## Palette
+
+Primary - #2541B2 (Persian Blue)
+Secondary - #03256C (Royal Blue)
+Highlight - #06BEE1 (Aero)
+White - #ffffff

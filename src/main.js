@@ -1,4 +1,5 @@
 import "./assets/main.css";
+import "./assets/css/common.scss";
 
 import { createApp } from "vue";
 import { createPinia } from "pinia";
@@ -17,8 +18,9 @@ library.add(far);
 
 /* Naive UI */
 import { createDiscreteApi } from "naive-ui";
-const { message } = createDiscreteApi(["message"]);
+const { message, dialog } = createDiscreteApi(["message", "dialog"]);
 window.$message = message;
+window.$dialog = dialog;
 
 /* Setup/Mount App */
 const app = createApp(App);
