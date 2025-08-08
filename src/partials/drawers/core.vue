@@ -2,6 +2,7 @@
     <n-drawer
         v-model:show="visible"
         :title="title"
+        :width="width"
         @update:show="handleUpdateShow"
     >
         <div class="drawer-header">
@@ -10,7 +11,7 @@
                 Close
             </n-button>
         </div>
-        <component :is="drawerComponent" />
+        <component :is="drawerComponent" :modal-props="props" />
     </n-drawer>
 </template>
 
@@ -50,3 +51,13 @@ export default {
     },
 };
 </script>
+
+<style lang="scss">
+.drawer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 2em;
+}
+</style>

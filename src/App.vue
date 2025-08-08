@@ -15,6 +15,7 @@
             :title="drawerTitle"
             :component-prop="drawerComponent"
             :props="drawerProps"
+            :width="600"
             @close="closeDrawer"
         />
     </n-config-provider>
@@ -47,6 +48,7 @@ import DrawerCore from "@/partials/drawers/core.vue";
                 this.drawerComponent = data.component;
                 this.drawerTitle = data.title;
                 this.drawerVisible = true;
+                this.drawerProps = data.props || {};
             },
             closeDrawer() {
                 this.drawerVisible = false;
@@ -66,6 +68,8 @@ import DrawerCore from "@/partials/drawers/core.vue";
     display: flex;
     .sidepanel_wrapper {
         width: 250px;
+        max-width: 250px;
+        min-width: 250px;
         height: 100%;
     }
     .main_wrapper {

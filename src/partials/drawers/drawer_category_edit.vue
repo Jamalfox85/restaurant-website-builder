@@ -10,32 +10,11 @@
             <n-form-item label="Title" path="title">
                 <n-input v-model:value="formData.title" />
             </n-form-item>
-            <n-form-item label="Description" path="description">
-                <n-input v-model:value="formData.description" type="textarea" />
-            </n-form-item>
-            <n-form-item label="Price" path="price">
-                <n-input-number v-model:value="formData.price" />
-            </n-form-item>
-            <n-form-item label="Image URL" path="img">
-                <n-input v-model:value="formData.img" />
-            </n-form-item>
-            <n-form-item label="Category" path="category">
-                <n-select
-                    v-model:value="formData.category"
-                    :options="menuCategories"
-                    placeholder="Select a category"
-                />
-            </n-form-item>
-            <n-form-item label="Tags" path="tags">
-                <n-select
-                    v-model:value="formData.tags"
-                    :options="menuTags"
-                    multiple
-                    placeholder="Select tags"
-                />
+            <n-form-item label="Subtitle" path="subtitle">
+                <n-input v-model:value="formData.subtitle" type="textarea" />
             </n-form-item>
         </n-form>
-        <n-button type="primary" @click="submitForm">Submit</n-button>
+        <n-button type="primary" @click="submitForm">Save Changes</n-button>
     </div>
 </template>
 <script>
@@ -49,21 +28,15 @@ import {
 } from "naive-ui";
 export default {
     components: { NForm, NFormItem, NInput, NInputNumber, NButton, NSelect },
+    props: ["modalProps"],
     data() {
         return {
             formData: {
-                title: "",
-                description: "",
-                price: 0,
-                img: "",
+                title: this.modalProps.cat.title || "",
+                subtitle: this.modalProps.cat.subtitle || "",
             },
             formRules: {
                 title: [{ required: true, message: "Title is required" }],
-                description: [
-                    { required: true, message: "Description is required" },
-                ],
-                price: [{ required: true, message: "Price is required" }],
-                img: [{ required: true, message: "Image URL is required" }],
             },
         };
     },

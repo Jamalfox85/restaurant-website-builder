@@ -41,11 +41,9 @@ export default {
             this.openDrawer({
                 component: drawer_items_edit,
                 title: "Edit Item",
-                // props: {
-                //     item,
-                //     categories: this.menuCategories,
-                //     tags: this.menuItemTags,
-                // },
+                props: {
+                    item,
+                },
             });
         },
         deleteItem(item) {

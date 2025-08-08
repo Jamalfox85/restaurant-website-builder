@@ -4,10 +4,14 @@ export const useStore = defineStore("app", {
     state: () => ({
         menu: {
             categories: [
-                { id: 1, title: "Appetizers" },
-                { id: 2, title: "Breakfast" },
-                { id: 3, title: "Soups" },
-                { id: 4, title: "Mains" },
+                {
+                    id: 1,
+                    title: "Appetizers",
+                    subTitle: "Start your meal right",
+                },
+                { id: 2, title: "Breakfast", subTitle: "Morning delights" },
+                { id: 3, title: "Soups", subTitle: "Warm and comforting" },
+                { id: 4, title: "Main Courses", subTitle: "Hearty meals" },
             ],
             tags: [
                 {
