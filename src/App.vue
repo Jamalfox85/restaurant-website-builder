@@ -1,14 +1,6 @@
 <template>
     <n-config-provider :theme-overrides="themeOverrides">
-        <div class="app_wrapper">
-            <TheSidepanel class="sidepanel_wrapper" />
-            <div class="main_wrapper">
-                <TheHeader class="header_wrapper" />
-                <div class="content_wrapper">
-                    <RouterView />
-                </div>
-            </div>
-        </div>
+        <RouterView />
 
         <drawer-core
             v-model:visibleProp="drawerVisible"
@@ -41,6 +33,8 @@ import DrawerCore from "@/partials/drawers/core.vue";
                 drawerTitle: "",
                 drawerComponent: null,
                 drawerProps: {},
+
+                isAuthenticated: false
             }
         },
         methods: {
