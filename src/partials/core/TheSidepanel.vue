@@ -28,45 +28,28 @@
     </div>
 </template>
 <script>
-import {
-    Home as HomeIcon,
-    FastFood as MenuIcon,
-    Grid as TemplateIcon,
-} from "@vicons/ionicons5";
 import { NButton, NMenu } from "naive-ui";
 import { NIcon } from "naive-ui";
-import { markRaw, h } from "vue";
+import { h } from "vue";
+import { routes } from "@/router";
 
 export default {
     components: { NButton, NMenu },
     data() {
         return {
-            routes: [
-                {
-                    name: "home",
-                    path: "/",
-                    label: "Home",
-                    icon: markRaw(HomeIcon),
-                },
-                {
-                    name: "menu",
-                    path: "/menu",
-                    label: "Menu",
-                    icon: markRaw(MenuIcon),
-                },
-                {
-                    name: "templates",
-                    path: "/templates",
-                    label: "Templates",
-                    icon: markRaw(TemplateIcon),
-                },
-            ],
             activeKey: "",
         };
     },
     computed: {
         menuOptions() {
-            let menuOptions = this.routes.map((route) => {
+            let menuRoutes = routes
+                .map((layout) => {
+                    return layout.children || [];
+                })
+                .flat()
+                .filter((route) => route.showInMenu);
+
+            let menuOptions = menuRoutes.map((route) => {
                 return {
                     label: () =>
                         h(

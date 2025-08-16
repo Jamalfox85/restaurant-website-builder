@@ -1,23 +1,21 @@
 <template lang="">
     <div class="template-container">
-        <div class="template-header">
-            <p>{{ name }}</p>
-        </div>
         <div class="template-img">
             <img :src="img" alt="Template Image" />
+        </div>
+        <div class="template-block-header">
+            <p>{{ name }}</p>
         </div>
         <div class="template-body">
             <p>{{ description }}</p>
             <div class="template-actions">
                 <n-button
-                    type="primary"
+                    color="#03256C"
                     class="select-button"
                     @click="selectTemplate"
                     >Select</n-button
                 >
-                <n-button type="secondary" class="preview-button"
-                    >Preview</n-button
-                >
+                <n-button ghost class="preview-button">Preview</n-button>
             </div>
         </div>
     </div>
@@ -48,22 +46,16 @@ export default {
 .template-container {
     display: flex;
     flex-direction: column;
-    width: 325px;
+    width: 300px;
     padding: 1em;
-    .template-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 1.2rem;
-        padding: 10px;
-    }
+
     .template-img {
         width: 100%;
-        height: 200px;
+        // height: 200px;
         background-color: #f0f0f0;
         border: 1px solid #ccc;
-        border-radius: 5px;
-        margin: 10px 0;
+        border-radius: 8px;
+        // margin: 10px 0;
         img {
             width: 100%;
             height: 100%;
@@ -71,15 +63,28 @@ export default {
             border-radius: 5px;
         }
     }
+    .template-block-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.2rem;
+        margin: 8px 0;
+        // padding: 10px;
+    }
     .template-body {
-        padding: 10px;
+        // padding: 10px;
+        font-size: 16px;
         .template-actions {
             display: flex;
             justify-content: center;
-            margin-top: 14px;
+            margin-top: 8px;
             .select-button,
             .preview-button {
-                margin: 0 8px;
+                flex-grow: 1;
+                border-radius: 8px;
+            }
+            .select-button {
+                margin-right: 8px;
             }
         }
     }

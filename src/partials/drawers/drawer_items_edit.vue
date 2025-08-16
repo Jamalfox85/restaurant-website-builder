@@ -4,8 +4,8 @@
             ref="form"
             :model="formData"
             :rules="formRules"
-            label-placement="left"
-            label-width="120px"
+            label-placement="top"
+            size="medium"
         >
             <n-form-item label="Title" path="title">
                 <n-input v-model:value="formData.title" />
@@ -13,19 +13,42 @@
             <n-form-item label="Description" path="description">
                 <n-input v-model:value="formData.description" type="textarea" />
             </n-form-item>
-            <n-form-item label="Price" path="price">
-                <n-input-number v-model:value="formData.price" />
-            </n-form-item>
-            <n-form-item label="Image URL" path="img">
-                <n-input v-model:value="formData.img" />
-            </n-form-item>
-            <n-form-item label="Category" path="category">
-                <n-select
-                    v-model:value="formData.category"
-                    :options="menuCategories"
-                    placeholder="Select a category"
-                />
-            </n-form-item>
+            <div class="flex">
+                <n-form-item label="Price" path="price">
+                    <n-input-number v-model:value="formData.price" />
+                </n-form-item>
+                <n-form-item label="Category" path="category">
+                    <n-select
+                        v-model:value="formData.category"
+                        :options="menuCategories"
+                        placeholder="Select a category"
+                    />
+                </n-form-item>
+            </div>
+            <n-card title="Image Upload" class="max-w-md mx-auto">
+                <n-upload
+                    :default-file-list="formData.fileList"
+                    list-type="image-card"
+                    accept="image/*"
+                    :max="1"
+                    :on-change="handleChange"
+                    :on-remove="handleRemove"
+                >
+                </n-upload>
+
+                <div
+                    v-if="formData.previewUrl"
+                    class="mt-4"
+                    style="margin-top: 1em"
+                >
+                    <n-image
+                        :src="formData.previewUrl"
+                        width="200"
+                        class="rounded-md shadow"
+                        preview-disabled
+                    />
+                </div>
+            </n-card>
             <n-form-item label="Tags" path="tags">
                 <n-select
                     v-model:value="formData.tags"
@@ -46,9 +69,22 @@ import {
     NInputNumber,
     NButton,
     NSelect,
+    NCard,
+    NUpload,
+    NImage,
 } from "naive-ui";
 export default {
-    components: { NForm, NFormItem, NInput, NInputNumber, NButton, NSelect },
+    components: {
+        NForm,
+        NFormItem,
+        NInput,
+        NInputNumber,
+        NButton,
+        NSelect,
+        NCard,
+        NUpload,
+        NImage,
+    },
     props: ["modalProps"],
     data() {
         return {
@@ -56,9 +92,10 @@ export default {
                 title: this.modalProps.item.title || "",
                 description: this.modalProps.item.description || "",
                 price: this.modalProps.item.price || 0,
-                img: this.modalProps.item.img || "",
+                previewUrl: this.modalProps.item.img || "",
                 category: this.modalProps.item.categoryId || null,
                 tags: this.modalProps.item.tagIds || [],
+                fileList: this.modalProps.item.fileList || [],
             },
             formRules: {
                 title: [{ required: true, message: "Title is required" }],
@@ -66,7 +103,6 @@ export default {
                     { required: true, message: "Description is required" },
                 ],
                 price: [{ required: true, message: "Price is required" }],
-                img: [{ required: true, message: "Image URL is required" }],
             },
         };
     },
@@ -97,6 +133,12 @@ export default {
                 }
             });
         },
+        handleChange() {
+            console.log("File changed");
+        },
+        handleRemove() {
+            console.log("File removed");
+        },
     },
 };
 </script>
@@ -108,9 +150,6 @@ export default {
     gap: 20px;
     .n-form-item {
         margin-bottom: 20px;
-    }
-    .n-button {
-        align-self: flex-end;
     }
 }
 </style>

@@ -4,14 +4,14 @@
             ref="form"
             :model="formData"
             :rules="formRules"
-            label-placement="left"
-            label-width="120px"
+            label-placement="top"
+            size="medium"
         >
             <n-form-item label="Title" path="title">
                 <n-input v-model:value="formData.title" />
             </n-form-item>
             <n-form-item label="Subtitle" path="subtitle">
-                <n-input v-model:value="formData.subtitle" type="textarea" />
+                <n-input v-model:value="formData.subtitle" />
             </n-form-item>
         </n-form>
         <n-button type="primary" @click="submitForm">Submit</n-button>
@@ -62,9 +62,6 @@ export default {
     gap: 20px;
     .n-form-item {
         margin-bottom: 20px;
-    }
-    .n-button {
-        align-self: flex-end;
     }
 }
 </style>

@@ -1,6 +1,30 @@
-<template lang="">
-    <div>
-        <h1>Templates</h1>
+<template>
+    <div class="view-wrapper">
+        <div class="view-header">
+            <div>
+                <h1 class="view-title">Choose a Template</h1>
+                <p class="view-subtitle">
+                    Select a template to start building your restaurant's
+                    website
+                </p>
+            </div>
+            <div>
+                <h3>Select Primary Brand Color</h3>
+                <n-color-picker
+                    v-model:value="primaryColor"
+                    :show-alpha="false"
+                    size="medium"
+                    style="max-width: 200px"
+                />
+                <p class="mt-2">
+                    Selected Color:
+                    <span :style="{ color: primaryColor }">{{
+                        primaryColor
+                    }}</span>
+                </p>
+            </div>
+        </div>
+
         <div class="template-grid">
             <Template
                 v-for="template in templates"
@@ -8,59 +32,92 @@
                 :name="template.name"
                 :description="template.description"
                 :img="template.img"
-            ></Template>
+                :primary-color="primaryColor"
+            />
         </div>
     </div>
 </template>
+
 <script>
 import Template from "@/partials/templates/Template.vue";
+import { NCard, NColorPicker } from "naive-ui";
+
 export default {
     components: {
         Template,
+        NCard,
+        NColorPicker,
     },
     data() {
-        return {};
+        return {
+            primaryColor: "#409eff", // default Naive UI blue
+        };
     },
     computed: {
         templates() {
             return [
                 {
                     id: 1,
-                    name: "Template #1",
+                    name: "Modern Bistro",
                     description:
-                        "This template description This template description This template description This template description",
-                    img: "https://wpdean.com/wp-content/uploads/2024/10/what-is-a-mockup.jpg",
+                        "Sleek and contemporary design for modern eateries.",
+                    img: "https://images.pexels.com/photos/1581554/pexels-photo-1581554.jpeg?auto=compress&cs=tinysrgb&w=1200",
                 },
                 {
                     id: 2,
-                    name: "Template #2",
+                    name: "Classic Diner",
                     description:
-                        "This template description This template description This template description This template description",
-                    img: "https://static.wixstatic.com/media/c746c3_ae71f0f45ecf49d2a75d0c8d0b3ede9c~mv2.png/v1/fill/w_980,h_735,al_c,q_90,usm_0.66_1.00_0.01,enc_avif,quality_auto/c746c3_ae71f0f45ecf49d2a75d0c8d0b3ede9c~mv2.png",
+                        "Retro-inspired layout perfect for diners and casual spots.",
+                    img: "https://cdn.pixabay.com/photo/2015/09/06/00/11/restaurant-926524_1280.jpg",
                 },
                 {
                     id: 3,
-                    name: "Template #3",
+                    name: "Elegant Fine Dining",
                     description:
-                        "This template description This template description This template description This template description",
-                    img: "https://img.glyphs.co/img?src=aHR0cHM6Ly9zMy5tZWRpYWxvb3QuY29tL3Jlc291cmNlcy9GcmVlLVdlYnNpdGUtTW9ja3VwLVBhY2stUHJldmlldy0xLmpwZw&q=70&enlarge=true&h=777&w=1200",
+                        "Sophisticated design for upscale dining experiences.",
+                    img: "https://images.pexels.com/photos/1123260/pexels-photo-1123260.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                },
+                {
+                    id: 5,
+                    name: "Trendy Foodtruck",
+                    description:
+                        "Vibrant and mobile-friendly design for food trucks.",
+                    img: "https://images.pexels.com/photos/2227960/pexels-photo-2227960.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
                 },
                 {
                     id: 4,
-                    name: "Template #4",
+                    name: "Casual Cafe",
                     description:
-                        "This template description This template description This template description This template description",
-                    img: "https://cdn.dribbble.com/userupload/7786799/file/original-03f0f6275fc002a74cbfa423f19d8cbf.jpg?resize=400x0",
+                        "Warm and inviting layout for cafes and coffee shops.",
+                    img: "https://images.pexels.com/photos/1089570/pexels-photo-1089570.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
+                },
+                {
+                    id: 7,
+                    name: "Seaside Grill",
+                    description:
+                        "Beach-themed design perfect for seaside restaurants.",
+                    img: "https://images.pexels.com/photos/10895800/pexels-photo-10895800.jpeg?auto=compress&cs=tinysrgb&w=1200",
+                },
+                {
+                    id: 8,
+                    name: "Urban Eatery",
+                    description:
+                        "Chic and modern design for urban dining experiences.",
+                    img: "https://images.pexels.com/photos/769152/pexels-photo-769152.jpeg?auto=compress&cs=tinysrgb&w=1200",
                 },
             ];
         },
     },
 };
 </script>
+
 <style lang="scss">
 .template-grid {
-    display: grid;
+    display: flex;
+    flex-wrap: wrap;
     gap: 20px !important;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    justify-content: flex-start;
+    padding: 2em;
+    margin: 2em;
 }
 </style>

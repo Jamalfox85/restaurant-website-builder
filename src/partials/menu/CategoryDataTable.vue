@@ -10,13 +10,13 @@
     </div>
 </template>
 <script>
-import { NDataTable, NButton, NTag, NEllipsis } from "naive-ui";
+import { NDataTable, NButton, NTag, NEllipsis, NText } from "naive-ui";
 import { FontAwesomeIcon } from "@fortawesome/vue-fontawesome";
 import { h } from "vue";
 import drawer_category_edit from "@/partials/drawers/drawer_category_edit.vue";
 
 export default {
-    components: { NDataTable, NButton, NTag, NEllipsis },
+    components: { NDataTable, NButton, NTag, NEllipsis, NText },
     inject: ["openDrawer"],
     computed: {
         menuCategories() {
@@ -49,7 +49,7 @@ export default {
 
             return [
                 {
-                    title: "Title",
+                    title: "Category Name",
                     key: "title",
                 },
                 {
@@ -62,20 +62,33 @@ export default {
                     render(row) {
                         return [
                             h(
-                                NButton,
+                                NText,
                                 {
-                                    size: "small",
-                                    type: "info",
-                                    style: { marginRight: "8px" },
+                                    style: {
+                                        color: "#03256C",
+                                        cursor: "pointer",
+                                        marginRight: "8px",
+                                    },
                                     onClick: () => self.editCategory(row),
                                 },
                                 { default: () => "Edit" }
                             ),
                             h(
-                                NButton,
+                                "NText",
                                 {
-                                    size: "small",
-                                    type: "error",
+                                    style: {
+                                        marginRight: "8px",
+                                    },
+                                },
+                                "|"
+                            ),
+                            h(
+                                NText,
+                                {
+                                    style: {
+                                        color: "#03256C",
+                                        cursor: "pointer",
+                                    },
                                     onClick: () => self.deleteCategory(row),
                                 },
                                 { default: () => "Delete" }

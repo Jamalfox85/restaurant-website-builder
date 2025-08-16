@@ -71,12 +71,13 @@ import DrawerCore from "@/partials/drawers/core.vue";
         display: flex;
         flex-direction: column;
         .header_wrapper {
-            height: 75px;
+            min-height: 75px;
         }
         .content_wrapper {
             flex-grow: 1;
             padding: 20px;
             border: solid 1px black;
+            overflow-y: scroll;
         }
     }
 }

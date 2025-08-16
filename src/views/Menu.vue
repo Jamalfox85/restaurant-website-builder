@@ -1,5 +1,5 @@
 <template lang="">
-    <div class="menu_wrapper">
+    <div class="view-wrapper">
         <div class="view-header">
             <h1 class="view-title text-red-500">Menu</h1>
             <n-button type="primary">Publish</n-button>
@@ -10,7 +10,8 @@
                     <div class="tab-content">
                         <div class="table-header">
                             <n-button
-                                type="primary"
+                                ghost
+                                size="large"
                                 class="create-bttn"
                                 @click="newCategory"
                             >
@@ -25,7 +26,8 @@
                         <div class="table-header">
                             <Filters @updateFilters="updateFilters" />
                             <n-button
-                                type="primary"
+                                ghost
+                                size="large"
                                 class="create-bttn"
                                 @click="newItem"
                                 >New Item</n-button

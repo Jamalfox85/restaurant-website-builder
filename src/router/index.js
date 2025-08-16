@@ -1,50 +1,61 @@
-// import { createRouter, createWebHistory } from "vue-router";
-
-// import Home from "../views/Home.vue";
-// import Menu from "../views/Menu.vue";
-// import Templates from "../views/Templates.vue";
-
-// import SignUp from "@/views/SignUp.vue";
-// import SignIn from "@/views/SignIn.vue";
-
-// const router = createRouter({
-//     history: createWebHistory(import.meta.env.BASE_URL),
-//     routes: [
-//         // Authenticated routes
-//         { path: "/", name: "home", component: Home },
-//         { path: "/menu", name: "menu", component: Menu },
-//         { path: "/templates", name: "templates", component: Templates },
-
-//         // Unauthenticated routes
-//         { path: "/signup", name: "signup", component: SignUp },
-//         { path: "/signin", name: "signin", component: SignIn },
-//     ],
-// });
-
-// export default router;
-
 import { createRouter, createWebHistory } from "vue-router";
-// import { useAuthStore } from "@/stores/auth"; // <-- your Pinia auth store
 
 import AuthenticatedLayout from "@/layouts/AuthenticatedLayout.vue";
 import UnauthenticatedLayout from "@/layouts/UnauthenticatedLayout.vue";
 
-// Pages
 import Home from "@/views/Home.vue";
 import Menu from "@/views/Menu.vue";
 import Templates from "@/views/Templates.vue";
+import Settings from "@/views/Settings.vue";
+
 import SignUp from "@/views/SignUp.vue";
 import SignIn from "@/views/SignIn.vue";
 
-const routes = [
+import {
+    Home as HomeIcon,
+    FastFood as MenuIcon,
+    Grid as TemplateIcon,
+    Settings as SettingsIcon,
+} from "@vicons/ionicons5";
+
+export const routes = [
     {
         path: "/",
         component: AuthenticatedLayout,
         meta: { requiresAuth: true },
         children: [
-            { path: "", name: "home", component: Home },
-            { path: "menu", name: "menu", component: Menu },
-            { path: "templates", name: "templates", component: Templates },
+            {
+                path: "/",
+                name: "home",
+                label: "Home",
+                component: Home,
+                icon: HomeIcon,
+                showInMenu: true,
+            },
+            {
+                path: "menu",
+                name: "menu",
+                label: "Menu",
+                component: Menu,
+                icon: MenuIcon,
+                showInMenu: true,
+            },
+            {
+                path: "templates",
+                name: "templates",
+                label: "Templates",
+                component: Templates,
+                icon: TemplateIcon,
+                showInMenu: true,
+            },
+            {
+                path: "settings",
+                name: "settings",
+                label: "Settings",
+                component: Settings,
+                icon: SettingsIcon,
+                showInMenu: true,
+            },
         ],
     },
     {

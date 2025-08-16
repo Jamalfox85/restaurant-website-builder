@@ -60,4 +60,30 @@ export default {
     margin-bottom: 20px;
     padding: 2em;
 }
+.form-wrapper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    padding: 2em;
+    .flex {
+        display: flex;
+        gap: 1em;
+        width: 100%;
+        & > * {
+            flex-grow: 1;
+            width: 50%;
+        }
+    }
+    .n-form-item,
+    .n-card {
+        margin-bottom: 20px;
+    }
+    .modal-actions-wrapper {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 20px;
+    }
+}
 </style>
