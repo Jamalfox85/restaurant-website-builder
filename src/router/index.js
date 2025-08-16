@@ -7,6 +7,9 @@ import Home from "@/views/Home.vue";
 import Menu from "@/views/Menu.vue";
 import Templates from "@/views/Templates.vue";
 import Settings from "@/views/Settings.vue";
+import Domains from "@/views/Domains.vue";
+import Billing from "@/views/Billing.vue";
+import Analytics from "@/views/Analytics.vue";
 
 import SignUp from "@/views/SignUp.vue";
 import SignIn from "@/views/SignIn.vue";
@@ -16,6 +19,9 @@ import {
     FastFood as MenuIcon,
     Grid as TemplateIcon,
     Settings as SettingsIcon,
+    Globe as DomainsIcon,
+    Wallet as BillingIcon,
+    Analytics as AnalyticsIcon,
 } from "@vicons/ionicons5";
 
 export const routes = [
@@ -54,6 +60,30 @@ export const routes = [
                 label: "Settings",
                 component: Settings,
                 icon: SettingsIcon,
+                showInMenu: true,
+            },
+            {
+                path: "domains",
+                name: "domains",
+                label: "Domains",
+                component: Domains,
+                icon: DomainsIcon,
+                showInMenu: true,
+            },
+            {
+                path: "billing",
+                name: "billing",
+                label: "Billing",
+                component: Billing,
+                icon: BillingIcon,
+                showInMenu: true,
+            },
+            {
+                path: "analytics",
+                name: "analytics",
+                label: "Analytics",
+                component: Analytics,
+                icon: AnalyticsIcon,
                 showInMenu: true,
             },
         ],

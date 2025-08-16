@@ -5,7 +5,7 @@
             :single-line="false"
             :columns="createColumns()"
             :data="menuItems"
-            :pagination="{ pageSize: 10 }"
+            :pagination="{ pageSize: 8 }"
         />
     </div>
 </template>
@@ -71,7 +71,7 @@ export default {
                         return h(
                             NTag,
                             {
-                                type: "info",
+                                // type: "info",
                                 bordered: false,
                             },
                             {
@@ -88,6 +88,18 @@ export default {
                 {
                     title: "Price",
                     key: "price",
+                    render(row) {
+                        return h(
+                            NText,
+                            {
+                                style: {
+                                    color: "#03256C",
+                                    fontWeight: "bold",
+                                },
+                            },
+                            { default: () => `$${row.price.toFixed(2)}` }
+                        );
+                    },
                 },
                 {
                     title: "Tags",
@@ -146,6 +158,9 @@ export default {
                     title: "Image",
                     key: "img",
                     render(row) {
+                        if (!row.img) {
+                            return null;
+                        }
                         return h("img", {
                             src: row.img,
                             alt: row.title,

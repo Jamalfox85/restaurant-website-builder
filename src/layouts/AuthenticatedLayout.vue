@@ -2,7 +2,7 @@
     <div class="app_wrapper">
         <TheSidepanel class="sidepanel_wrapper" />
         <div class="main_wrapper">
-            <TheHeader class="header_wrapper" />
+            <!-- <TheHeader class="header_wrapper" /> -->
             <div class="content_wrapper">
                 <RouterView />
             </div>

@@ -76,7 +76,6 @@ import DrawerCore from "@/partials/drawers/core.vue";
         .content_wrapper {
             flex-grow: 1;
             padding: 20px;
-            border: solid 1px black;
             overflow-y: scroll;
         }
     }

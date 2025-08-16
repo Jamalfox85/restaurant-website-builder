@@ -10,14 +10,19 @@
                 margin-bottom: 4em;
             "
         >
-            <h1 role="title" style="font-size: 18px" class="sidepanel-title">
-                Restaurant Website Builder
-            </h1>
-            <img
-                src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?_gl=1*175bit1*_ga*MTU2NjMyMTU3MS4xNzU0MjMwMzg5*_ga_8JE65Q40S6*czE3NTQ0Mjc3NjYkbzIkZzEkdDE3NTQ0Mjc3NzYkajUwJGwwJGgw"
-                alt="Logo"
-                style="width: 75%; height: auto; border: solid 1px #ccc"
-            />
+            <div class="profile-group">
+                <div
+                    class="profile-image"
+                    style="display: flex; align-items: center; gap: 20px"
+                >
+                    <img
+                        src="https://images.pexels.com/photos/67468/pexels-photo-67468.jpeg?_gl=1*175bit1*_ga*MTU2NjMyMTU3MS4xNzU0MjMwMzg5*_ga_8JE65Q40S6*czE3NTQ0Mjc3NjYkbzIkZzEkdDE3NTQ0Mjc3NzYkajUwJGwwJGgw"
+                        alt="Profile Image"
+                        style="width: 50px; height: 50px; border-radius: 50%"
+                    />
+                    <div class="profile-name">John Doe</div>
+                </div>
+            </div>
         </div>
         <n-menu
             v-model:value="activeKey"
@@ -86,10 +91,8 @@ export default {
 </script>
 <style lang="scss">
 .sidepanel_wrapper {
-    border: solid 1px black;
-    background-color: #03256c;
-    color: #fff;
-    .sidepanel-title {
+    .profile-group {
+        width: 100%;
     }
 }
 </style>

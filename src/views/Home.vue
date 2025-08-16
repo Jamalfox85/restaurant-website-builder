@@ -8,15 +8,15 @@
         <div class="quick-stats">
             <n-card class="quick-stat-card">
                 <p class="stat-label">Menu Items</p>
-                <p class="stat-num">120</p>
+                <p class="stat-num">19</p>
             </n-card>
             <n-card class="quick-stat-card">
                 <p class="stat-label">Categories</p>
-                <p class="stat-num">15</p>
+                <p class="stat-num">6</p>
             </n-card>
             <n-card class="quick-stat-card">
-                <p class="stat-label">Visitors</p>
-                <p class="stat-num">5000</p>
+                <p class="stat-label">Visitors (Last 30 Days)</p>
+                <p class="stat-num">1,743</p>
             </n-card>
         </div>
 
